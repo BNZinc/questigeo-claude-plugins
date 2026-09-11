@@ -11,7 +11,7 @@ a new editor. This skill supplies application knowledge, not a browser driver:
 use the host's available browser/computer-use tools and their instructions.
 If none are available, explain that limitation instead of claiming to draw.
 
-## Completion Means Local Files
+## Completion Means Matching, Downloadable Files
 
 For a drawing, reproduction, or editing task, finish by saving **both a PNG of
 the finished drawing and an editable GGB** to local files, then give the actual
@@ -25,6 +25,14 @@ completed delivery. Recording is only an extra when requested, never a
 replacement for either file. If a host cannot save or expose a local file,
 report the missing artifact and limitation rather than inventing a path or
 claiming completion.
+
+**Never redraw a replacement PNG with Python, SVG, an image generator, or another
+renderer when the site's export fails. Never patch the downloaded GGB to make it
+appear correct.** A clean replacement image can conceal incorrect editor geometry.
+Correct the drawing in Questi Geo and export again, or report partial completion.
+The final canvas, saved PNG, and reopened GGB must depict the same construction.
+In ChatGPT Work, expose real downloadable attachments, not just a filename or a
+cloud filesystem path; include an unchanged PNG+GGB ZIP for download compatibility.
 
 ## Choose the Workflow
 
@@ -56,14 +64,19 @@ claiming completion.
    and ordinary circle equations are readouts, not numeric editors. Derive canvas locations
    from a fresh screenshot and visible bounds; never reuse fixture screen pixels
    at a different zoom, sidebar width, device scale, or iframe size.
-5. Complete one construction at a time, then inspect the result. Escape cancels
+5. Complete one construction at a time, then inspect the result. If it is wrong,
+   undo that attempt or edit it before retrying; do not draw replacements over
+   the old attempt. Escape cancels
    construction and returns to selection; dismiss an open menu/dialog first if
    it consumes Escape. Point/text/equation placement is one-shot. Do not assume
    any other tool remains active after creation.
+   Escape does not delete already committed points or strokes. Use history and
+   visual inspection to check what remains; preserve the user's earlier work.
 6. Distinguish a preview from a committed object: observe an enabled Create or
    Apply button, click it, then confirm the object survives leaving the editor.
-   Verify the final canvas visually and, when relevant, use Property Code to
-   inspect the same live objects. Complete the local-file delivery above.
+   Verify the final canvas visually and use Property Code to check the intended
+   objects and any unwanted extra attempts. Selecting a command may pan the view;
+   reobserve before canvas actions. Complete the file delivery above.
    State approximations, import warnings, and untested paid steps explicitly.
 
 ## Important Boundaries

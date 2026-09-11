@@ -1,17 +1,17 @@
 {
-  "version": "1.0.2",
-  "sourceCommit": "eb6f4f478e317cbe4f04ec76e65fa28864af2695",
+  "version": "1.0.3",
+  "sourceCommit": "6fc250541e9d1a69af17ff31567d4c7776da84a1",
   "sha256": {
-    ".claude-plugin/plugin.json": "55287fdb41e0fb782d9b02eb10f41a7286bc35b2f71508f18edc9dbcc7985f6e",
+    ".claude-plugin/plugin.json": "78d1013949ed23f86bbf5a9f1db6e2f9dcfb26b8d319414d148ae14c8297afc5",
     "assets/logo.png": "e445bcf27d72767c2e0e51f46f7b56b55b60f708d38a72e140231d572d6b4767",
-    "skills/questi-geo/SKILL.md": "0506cca8e4298fe4ca53b62838641f6cb93b99d4fdbad53cd285f691b60880e7",
+    "skills/questi-geo/SKILL.md": "527f1f830253b9f97028a62fde9de689a7f9142630ad168f9572cb5fac4080bb",
     "skills/questi-geo/assets/triangle-reference.svg": "2b264936a5e72a1dfd3841e603a9457956bc9f978eff59c3605c48786f561abc",
     "skills/questi-geo/references/calibration.md": "6208afae68b2601ad54f465d864fa69a2ea9a1ffcb9e5b0d4355cef85e4b0385",
-    "skills/questi-geo/references/editor.md": "2ac314ab1ade32ac2153054fed190b41904239b149efb4322dbf24777b0164e8",
-    "skills/questi-geo/references/files-and-access.md": "fc1ea6e21414fca453ca6277c656a5055041308686a61dea1bab05458c09035e",
+    "skills/questi-geo/references/editor.md": "10b16bdd11ae53a7093988a4b41e7e9b24619ad7acf6f9c21eddceed2c90e4d7",
+    "skills/questi-geo/references/files-and-access.md": "29202e73dd58f4e89c312fab0224689fc9cd4f680b629be93d5a8688b46a4293",
     "skills/questi-geo/references/functions.md": "421a0d3a443c8ab2242ad5a43480d6acb7fd5866426391628e608fc4baae7f0b",
     "skills/questi-geo/references/reproduce.md": "647515637a8757ac5d5a47d12f430a20744ca793d4bae3a07530826294071d8e",
-    "skills/questi-geo/references/triangle.md": "592f80417e01eb23b5e301358fffe45427299cb20eff1c3e671e6892b2c93b71",
+    "skills/questi-geo/references/triangle.md": "1a774774b0ea694ef966f3b88231d750b5ab076bd5ccea20a77d5cfdae65fe02",
     "skills/questi-geo/scripts/landmarks.mjs": "365edefe76f585734f7f0573eab3ae018e88fe70da232751f8b2f5921369fb15"
   }
 }

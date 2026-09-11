@@ -1,7 +1,7 @@
 # Questi Geo for Claude
 
 Draw, edit, and export mathematical diagrams in [Questi Geo](https://geo.questi.kr/).
-Published by **BnZ**. Plugin version: **1.0.2**.
+Published by **BnZ**. Plugin version: **1.0.3**.
 
 This skills-only plugin teaches Claude how to use the existing browser editor:
 reproduce diagrams from problem images, construct geometry, edit equations and
@@ -12,6 +12,13 @@ plus both verified absolute file paths. A process video, canvas preview, or
 clipboard copy is not a substitute. Recordings are optional extras only when
 requested. Explicit requests for other output formats or inspection-only work
 still take precedence.
+
+The editor, PNG, and reopened GGB must contain the same final geometry. An
+independently redrawn image or patched archive is not an export. Failed exports
+must be reported, and failed construction attempts must be undone or edited
+before retrying. Verify actual downloaded files before inferring failure from
+a download-event timeout. Cloud sessions must provide working download links,
+not just cloud paths; a ZIP of unchanged originals can supplement attachments.
 
 ## Requirements
 
@@ -37,9 +44,9 @@ still take precedence.
 
 Example prompts:
 
-- Recreate this math diagram in Questi Geo. Save a PNG and editable GGB locally and give me both paths.
-- Draw a triangle with a dashed altitude in Questi Geo, then save a PNG and GGB and give me both local paths.
-- Plot y=x^2-1 for -2<=x<=2 in Questi Geo. Save a PNG and GGB locally and give me both paths.
+- Recreate this math diagram in Questi Geo. Export matching PNG and editable GGB files, verify they match, and provide both downloads. Report any failed export without creating replacement files.
+- Draw one triangle with a dashed altitude in Questi Geo. Export PNG and GGB, reopen the GGB to compare with the PNG, and provide both files plus a ZIP of the originals.
+- Plot y=x^2-1 for -2<=x<=2 in Questi Geo. Export matching PNG and GGB files and provide both downloads; identify any unverified or failed output.
 
 You can invoke the skill explicitly with `/questi-geo:questi-geo`.
 Follow your host's browser setup and permission prompts. Installing the skill
