@@ -55,7 +55,15 @@ queued/in-progress state and resulting library item. If the submission result is
 uncertain, check the existing job instead of submitting it again. A login gate
 is a legitimate requirement, not an error to bypass.
 
-## Export and Evidence
+## Export and Local Delivery
+
+Complete drawing tasks with two files from the same final state: a clean PNG
+capture and an editable GGB. Use the user's requested output directory; otherwise
+use the host's accessible local output/download directory. Do not overwrite an
+existing source or unrelated file. Prefer matching descriptive basenames, using
+a unique suffix when needed.
+
+### Export Through the Editor
 
 - Header 파일 저장 exports GGB. Guests download directly; a signed-in or embedded
   context may show a save dialog. Local saving is separate from database saving.
@@ -70,10 +78,41 @@ is a legitimate requirement, not an error to bypass.
 - A GGB export can include `geogebra.xml`, `postgeo.json`, and `construction.txt`.
   The snapshot preserves application-specific information; native GeoGebra may
   not reproduce every unsupported relation identically.
-- Verify the browser download, its filename, and nonempty artifact when the
-  host exposes them. Reopening in a separate document is a useful round-trip
-  check. Describe visual matching as approximate unless coordinates and
-  mathematical constraints were actually verified.
+- Hide tracing references unless requested in the result, dismiss selection
+  handles, and verify the export bounds. Export the PNG and GGB after the final
+  correction; if the drawing changes afterward, replace the pair with fresh
+  exports. Do not substitute the original input image, a video frame, or an
+  older download for the completed drawing.
+
+### Verify and Deliver the Files
+
+1. Use the host's supported download controls to wait for each new download and
+   save it to the chosen location. A click or success toast is not sufficient.
+   Where supported, register the download listener before clicking the export
+   control. Resolve the actual saved filenames, including browser-added suffixes;
+   do not assume a default Downloads path or reuse a temporary blob URL.
+2. Verify that both files exist, have nonzero size, and are the expected formats
+   using available file tools. Open the saved PNG and check the actual drawing,
+   labels, dashes, and unclipped bounds. Check that the GGB is a readable archive
+   containing `geogebra.xml`, not HTML/error text renamed with a `.ggb` extension.
+   Reopen that saved GGB in a separate document when supported, checking editable
+   geometry rather than only a background image. Never replace the user's canvas
+   for this check; state any verification that could not be performed.
+3. In the final response, give separate labeled, clickable links to the PNG and
+   GGB using their verified absolute local paths. Show the PNG as an inline
+   preview if the host supports it, but keep its file link as well. Briefly note
+   approximations or warnings. A recording, if requested, is a supplementary
+   third artifact, not the primary result.
+4. If either export fails, report partial completion, identify the missing file,
+   and still provide any verified successful file. If downloads exist only in a
+   remote/sandbox host, identify that location honestly and expose its supported
+   download links; do not claim they are on the user's computer. If local saving
+   is unavailable, say the local-delivery requirement is not yet met.
+
+### Round-Trip Checks
+
+- Describe visual matching as approximate unless coordinates and mathematical
+  constraints were actually verified.
 - Compare every polygon edge, computed corner, fill, and equation label after
   reopening, not just object counts. Older native snapshots with intact ordered
   polygon ownership can recover omitted edge/corner indices; incomplete or

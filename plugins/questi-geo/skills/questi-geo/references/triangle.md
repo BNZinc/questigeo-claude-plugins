@@ -4,7 +4,8 @@ Reference: [triangle-reference.svg](../assets/triangle-reference.svg).
 It is an original test drawing, not a screenshot of a customer's document.
 
 Prompt: "Recreate this triangle with a dashed altitude and labels in Questi Geo,
-without image-to-GGB conversion. Download an editable GGB."
+without image-to-GGB conversion. Save a PNG capture and an editable GGB locally,
+then give me both file paths."
 
 Expected structure: triangle ABC, horizontal AB, C above and closer to A than B,
 perpendicular dashed altitude CD to AB, D between A and B; four labels.
@@ -23,8 +24,11 @@ Pixel-perfect matching is not required; exact metric constraints are not asserte
 5. Inspect the finished canvas and Property Code. Optionally group the strokes
    using multiple selection and confirm that double-click selects one member
    rather than changing its dash style.
-6. Export GGB using header Save (direct download for guests). Verify the download. When supported,
-   reopen it in a separate blank document and check all strokes/labels/dashes.
+6. Follow [local-file delivery](files-and-access.md#export-and-local-delivery):
+   export a PNG and GGB, verify both saved files, inspect the PNG, and give both
+   absolute paths. When supported, reopen the GGB in a separate blank document
+   and check all strokes/labels/dashes. A screenshot or recording alone fails
+   this exercise.
 
 Record which actions were performed, the URL/build used, screenshot, artifact
 path, and which steps were not tested. Do not report this as an independent

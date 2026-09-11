@@ -1,11 +1,17 @@
 # Questi Geo for Claude
 
 Draw, edit, and export mathematical diagrams in [Questi Geo](https://geo.questi.kr/).
-Published by **BnZ**. Plugin version: **1.0.1**.
+Published by **BnZ**. Plugin version: **1.0.2**.
 
 This skills-only plugin teaches Claude how to use the existing browser editor:
 reproduce diagrams from problem images, construct geometry, edit equations and
 ranges, preserve groups, import GGB files, and verify exported drawings.
+
+Drawing tasks finish with **a PNG capture and an editable GGB saved locally**,
+plus both verified absolute file paths. A process video, canvas preview, or
+clipboard copy is not a substitute. Recordings are optional extras only when
+requested. Explicit requests for other output formats or inspection-only work
+still take precedence.
 
 ## Requirements
 
@@ -13,6 +19,9 @@ ranges, preserve groups, import GGB files, and verify exported drawings.
   editor and its canvas. This plugin does not install a browser driver or MCP
   server. Without those tools, Claude can explain a construction but cannot
   perform it on the website.
+- Completing file delivery also requires host download and file access. If a
+  file cannot be saved or verified, Claude must report incomplete delivery. A
+  remote host's file path must not be presented as a path on the user's computer.
 - Drawing and local GGB/image downloads do not require a Questi account.
 - Private library actions and image-to-GGB conversion require Questi sign-in.
   Conversion may spend credits and must be confirmed before submission.
@@ -28,9 +37,9 @@ ranges, preserve groups, import GGB files, and verify exported drawings.
 
 Example prompts:
 
-- Recreate this math diagram in Questi Geo and download the GGB.
-- Draw a triangle with a dashed altitude in Questi Geo.
-- Plot y=x^2-1 for -2<=x<=2 in Questi Geo, then change its quadratic coefficient.
+- Recreate this math diagram in Questi Geo. Save a PNG and editable GGB locally and give me both paths.
+- Draw a triangle with a dashed altitude in Questi Geo, then save a PNG and GGB and give me both local paths.
+- Plot y=x^2-1 for -2<=x<=2 in Questi Geo. Save a PNG and GGB locally and give me both paths.
 
 You can invoke the skill explicitly with `/questi-geo:questi-geo`.
 Follow your host's browser setup and permission prompts. Installing the skill

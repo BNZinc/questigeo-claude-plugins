@@ -1,7 +1,7 @@
 {
   "name": "questi-geo",
-  "version": "1.0.1",
-  "description": "Draw, edit, and export mathematical diagrams in Questi Geo using browser or computer-use tools.",
+  "version": "1.0.2",
+  "description": "Draw and edit mathematical diagrams in Questi Geo, then save PNG and editable GGB files locally and provide their paths using host browser/computer-use tools.",
   "author": {
     "name": "BnZ",
     "email": "support@questi.im"
