@@ -70,7 +70,11 @@ selection/tool. Settings near login is application settings, not object properti
   do not make differently styled objects have the same absolute thickness/size.
 - For fills and angle/equality marks, use the workflows below.
 - Undo/redo are available in the header. Prefer these over deleting unrelated
-  objects when correcting a mistaken gesture.
+  objects when correcting a mistaken gesture. Inspect after undo: point-defined
+  tools may commit points before the composite. Escape leaves committed objects
+  in place; it is not a reset. Do not keep a failed triangle and draw another on
+  top of it. Double-clicking a solid line twice toggles it back to solid; confirm
+  the selected target and visible dash pattern instead of repeating blindly.
 
 ## Fills and Interior Strokes
 
