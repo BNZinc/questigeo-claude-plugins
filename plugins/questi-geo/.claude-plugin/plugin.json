@@ -1,0 +1,19 @@
+{
+  "name": "questi-geo",
+  "version": "1.0.1",
+  "description": "Draw, edit, and export mathematical diagrams in Questi Geo using browser or computer-use tools.",
+  "author": {
+    "name": "BnZ",
+    "email": "support@questi.im"
+  },
+  "homepage": "https://geo.questi.kr/",
+  "keywords": [
+    "geometry",
+    "diagrams",
+    "geogebra",
+    "ggb",
+    "questi"
+  ],
+  "skills": "./skills/",
+  "repository": "https://github.com/BNZinc/questigeo-claude-plugins"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "questigeo-claude-plugins",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "sync": "node scripts/sync-from-source.mjs",
+    "check": "node scripts/validate.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
