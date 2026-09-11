@@ -11,6 +11,21 @@ a new editor. This skill supplies application knowledge, not a browser driver:
 use the host's available browser/computer-use tools and their instructions.
 If none are available, explain that limitation instead of claiming to draw.
 
+## Completion Means Local Files
+
+For a drawing, reproduction, or editing task, finish by saving **both a PNG of
+the finished drawing and an editable GGB** to local files, then give the actual
+absolute path to each in the final response. Follow an explicit request for a
+different output scope; inspection-only questions do not require exports.
+
+Read [the export and delivery procedure](references/files-and-access.md#export-and-local-delivery)
+before finishing. Verify both downloads and inspect the saved PNG. A visible
+canvas, clipboard copy, browser screenshot, or process video alone is not a
+completed delivery. Recording is only an extra when requested, never a
+replacement for either file. If a host cannot save or expose a local file,
+report the missing artifact and limitation rather than inventing a path or
+claiming completion.
+
 ## Choose the Workflow
 
 - For "draw the same diagram" from a problem image, scan, or PDF, start with
@@ -48,7 +63,7 @@ If none are available, explain that limitation instead of claiming to draw.
 6. Distinguish a preview from a committed object: observe an enabled Create or
    Apply button, click it, then confirm the object survives leaving the editor.
    Verify the final canvas visually and, when relevant, use Property Code to
-   inspect the same live objects. Verify the requested download actually occurs.
+   inspect the same live objects. Complete the local-file delivery above.
    State approximations, import warnings, and untested paid steps explicitly.
 
 ## Important Boundaries

@@ -1,8 +1,9 @@
 # Reproduce a Problem Diagram
 
 Use this for an actual user-provided problem, not the bundled triangle exercise.
-The deliverable is editable drawing objects plus the requested export, not the
-reference image left underneath an otherwise empty canvas.
+The default deliverables are a saved PNG of the finished drawing and an editable
+GGB, with both absolute local paths in the final response. A process video or the
+reference image left underneath an empty canvas does not satisfy this task.
 
 ## Read the Source Before Drawing
 
@@ -96,12 +97,16 @@ the reference hidden and selection handles dismissed. Check:
 | Topology | Same crossings, touching points, gaps, branch count, and inside/outside regions |
 | Metric | Given coordinates/equations, slopes, ratios, and endpoints checked numerically |
 | Appearance | Aspect ratio, label/subscript readability, thickness, dashes, fills, arrows |
-| Deliverable | Nonempty PNG/GGB, editable objects, reopen without missing geometry |
+| Deliverable | Both PNG and GGB saved locally, verified paths, editable objects, reopen without missing geometry |
 
 Fix the largest discrepancy first, then compare again. An aggregate image score
 does not excuse one missing edge or misplaced tangency. Do not declare all
 arbitrary problems supported after a few examples. Report unreadable source
 details, approximate portions, unsupported constructions, and untested cases.
+
+Finish with [local-file delivery](files-and-access.md#export-and-local-delivery).
+If corrections were made during comparison, export the corrected drawing again
+so both delivered files show the same final result.
 
 For skill development, keep the real input identity and results in repository
 test evidence, outside the distributable skill. Test contrasting diagram types
