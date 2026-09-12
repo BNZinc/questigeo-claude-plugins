@@ -46,6 +46,10 @@ selection/tool. Settings near login is application settings, not object properti
 - **Equation label:** 수식 넣기 opens the math input dialog first. Enter the
   formula, confirm, then click its position. This creates an annotation, not a
   function graph. See functions.md for plotted equations.
+  Match typography deliberately: ordinary Text defaults to sans-serif. When
+  the reference uses mathematical serif labels, use the existing equation or
+  LaTeX/serif controls rather than accepting the default text style. Inspect the
+  rendered letters and their size relative to the geometry before exporting.
 
 ## Selection, Style, and Relationships
 

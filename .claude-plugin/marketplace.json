@@ -1,12 +1,12 @@
 {
   "name": "questigeo-claude-plugins",
-  "description": "BnZ's Questi Geo drawing skill for Claude.",
+  "description": "BnZ's Questi Geo cloud drawing plugin for Claude.",
   "owner": { "name": "BnZ", "email": "support@questi.im" },
   "plugins": [
     {
       "name": "questi-geo",
       "source": "./plugins/questi-geo",
-      "description": "Draw, edit, and export mathematical diagrams in Questi Geo using browser or computer-use tools.",
+      "description": "Draw mathematical diagrams through Questi Geo's cloud browser and deliver matching PNG and editable GGB downloads.",
       "category": "productivity",
       "homepage": "https://geo.questi.kr/"
     }

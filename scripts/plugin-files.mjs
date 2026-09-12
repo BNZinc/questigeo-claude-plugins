@@ -1,5 +1,6 @@
 export const pluginFiles = [
   '.claude-plugin/plugin.json',
+  '.mcp.json',
   'assets/logo.png',
   'skills/questi-geo/SKILL.md',
   'skills/questi-geo/assets/triangle-reference.svg',
@@ -7,7 +8,10 @@ export const pluginFiles = [
   'skills/questi-geo/references/editor.md',
   'skills/questi-geo/references/files-and-access.md',
   'skills/questi-geo/references/functions.md',
+  'skills/questi-geo/references/hosted-browser.md',
+  'skills/questi-geo/references/recovery.md',
   'skills/questi-geo/references/reproduce.md',
+  'skills/questi-geo/references/runtime.md',
   'skills/questi-geo/references/triangle.md',
   'skills/questi-geo/scripts/landmarks.mjs',
 ];
