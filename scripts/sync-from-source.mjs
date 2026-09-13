@@ -5,6 +5,7 @@ import { lstat, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pluginFiles, repository } from './plugin-files.mjs';
+import { validateMcp } from './mcp-config.mjs';
 
 const root = path.resolve(fileURLToPath(new URL('../', import.meta.url)));
 
@@ -23,6 +24,7 @@ export async function prepareSync(source, ref = 'HEAD') {
     throw new Error('Unexpected source plugin identity or version');
   }
   manifest.repository = repository;
+  validateMcp(manifest, files);
   files['.claude-plugin/plugin.json'] = Buffer.from(`${JSON.stringify(manifest, null, 2)}\n`);
   return {
     files,

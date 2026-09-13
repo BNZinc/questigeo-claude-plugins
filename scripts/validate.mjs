@@ -5,6 +5,7 @@ import { lstat, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pluginFiles, repository } from './plugin-files.mjs';
+import { validateMcp } from './mcp-config.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -34,6 +35,7 @@ export async function validate(directory = root) {
   assert.equal(manifest.author.name, 'BnZ');
   assert.equal(manifest.repository, repository);
   assert.equal(manifest.skills, './skills/');
+  validateMcp(manifest, files);
   assert.equal(manifest.version, pkg.version);
   assert.equal(manifest.version, release.version);
   assert.match(manifest.version, /^\d+\.\d+\.\d+$/);
@@ -42,6 +44,7 @@ export async function validate(directory = root) {
   assert.equal(marketplace.plugins.length, 1);
   assert.equal(marketplace.plugins[0].name, manifest.name);
   assert.equal(marketplace.plugins[0].source, './plugins/questi-geo');
+  assert.deepEqual(Object.keys(marketplace.plugins[0]).sort(), ['name', 'source', 'description', 'category', 'homepage'].sort(), 'Marketplace must not override plugin components');
   assert.deepEqual(Object.keys(release.sha256).sort(), [...pluginFiles].sort());
   for (const [name, bytes] of Object.entries(files)) {
     assert(bytes.length > 0, `Empty file: ${name}`);

@@ -8,6 +8,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { prepareSync } from '../scripts/sync-from-source.mjs';
 import { validate } from '../scripts/validate.mjs';
+import { pluginFiles } from '../scripts/plugin-files.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const git = (cwd, args) => execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -30,7 +31,46 @@ async function rehash(directory, name) {
 }
 
 test('release is complete, self-contained, and matches its provenance hashes', async () => {
-  assert.equal((await validate()).count, 11);
+  assert.equal((await validate()).count, pluginFiles.length);
+});
+
+test('MCP credentials, local commands and unreviewed endpoints are rejected even with fresh hashes', async t => {
+  const directory = await fixture(t);
+  const name = '.mcp.json';
+  const file = path.join(directory, 'plugins/questi-geo', name);
+  const original = JSON.parse(await readFile(file));
+  for (const change of [
+    { url: 'https://example.invalid/mcp' },
+    { headers: { Authorization: 'Bearer test-secret' } },
+    { command: 'node', args: ['unreviewed.mjs'] },
+    { env: { ACCESS_KEY: 'test-secret' } },
+  ]) {
+    const config = structuredClone(original);
+    Object.assign(config.mcpServers['questi-geo-browser'], change);
+    await writeFile(file, JSON.stringify(config));
+    await rehash(directory, name);
+    await assert.rejects(validate(directory), /Only the reviewed HTTPS MCP/);
+  }
+});
+
+test('manifest and marketplace cannot redirect the reviewed MCP configuration', async t => {
+  const directory = await fixture(t);
+  const name = '.claude-plugin/plugin.json';
+  const file = path.join(directory, 'plugins/questi-geo', name);
+  const manifest = JSON.parse(await readFile(file));
+  await writeFile(file, JSON.stringify({ ...manifest, mcpServers: { other: { command: 'node' } } }));
+  await rehash(directory, name);
+  await assert.rejects(validate(directory), /Hosted MCP manifest binding/);
+  await writeFile(file, JSON.stringify({ ...manifest, hooks: './hooks.json' }));
+  await rehash(directory, name);
+  await assert.rejects(validate(directory), /Unexpected executable/);
+  await cp(path.join(root, 'plugins/questi-geo', name), file);
+  await rehash(directory, name);
+  const catalogFile = path.join(directory, '.claude-plugin/marketplace.json');
+  const catalog = JSON.parse(await readFile(catalogFile));
+  catalog.plugins[0].mcpServers = { other: { command: 'node' } };
+  await writeFile(catalogFile, JSON.stringify(catalog));
+  await assert.rejects(validate(directory), /Marketplace must not override/);
 });
 
 test('unreviewed file content and accidental private files are rejected', async t => {
@@ -102,4 +142,19 @@ test('sync refuses a linked output directory instead of writing outside its chec
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Refusing symlink/);
   assert.deepEqual(await readdir(outside), []);
+});
+
+test('upload archive includes the manifest, MCP and only validated plugin files', async t => {
+  const directory = await fixture(t);
+  const result = spawnSync(process.execPath, [path.join(directory, 'scripts/package.mjs')], { encoding: 'utf8', timeout: 10000 });
+  assert.equal(result.status, 0, result.stderr);
+  const output = JSON.parse(result.stdout);
+  const names = execFileSync('unzip', ['-Z1', output.archive], { encoding: 'utf8' }).trim().split('\n');
+  assert.deepEqual(names.sort(), [...pluginFiles].sort());
+  for (const name of pluginFiles) {
+    assert.deepEqual(execFileSync('unzip', ['-p', output.archive, name]), await readFile(path.join(directory, 'plugins/questi-geo', name)));
+  }
+  const expected = createHash('sha256').update(await readFile(output.archive)).digest('hex');
+  assert.equal(output.sha256, expected);
+  assert.match(await readFile(`${output.archive}.sha256`, 'utf8'), new RegExp(`^${expected}  `));
 });

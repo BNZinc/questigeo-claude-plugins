@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "questi-geo-browser": {
+      "type": "http",
+      "url": "https://questigeo-browser.koreacentral.cloudapp.azure.com/mcp"
+    }
+  }
+}

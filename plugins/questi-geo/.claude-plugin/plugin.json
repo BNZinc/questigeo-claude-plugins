@@ -1,7 +1,7 @@
 {
   "name": "questi-geo",
-  "version": "1.0.3",
-  "description": "Draw and edit mathematical diagrams in Questi Geo, then save PNG and editable GGB files locally and provide their paths using host browser/computer-use tools.",
+  "version": "1.0.4",
+  "description": "Draw mathematical diagrams through Questi Geo's hosted browser and deliver PNG and editable GGB downloads.",
   "author": {
     "name": "BnZ",
     "email": "support@questi.im"
@@ -15,5 +15,6 @@
     "questi"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "repository": "https://github.com/BNZinc/questigeo-claude-plugins"
 }
