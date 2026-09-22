@@ -76,13 +76,18 @@ real expiring download links instead; it does not write onto the user's computer
 - For "draw the same diagram" from a problem image, scan, or PDF, start with
   [reproduce.md](references/reproduce.md). It covers source interpretation,
   coordinate calibration, exact versus visual construction, and comparison.
+  An attached problem image and a short request are sufficient; do not require
+  the user to provide coordinates, tool instructions, or a solved construction.
+  See [image-request examples](references/image-requests.md) for the intended scope.
 - For drawing, editing, groups, or navigation, read [editor.md](references/editor.md).
 - After a failed gesture or incorrect result, use [recovery.md](references/recovery.md)
   to inspect and remove the failed attempt before retrying.
 - For GGB/image import, reference tracing, login, library, or downloads, read
   [files-and-access.md](references/files-and-access.md).
 - For plotted equations, coefficients, ranges, or construction code, read
-  [functions.md](references/functions.md).
+  [functions.md](references/functions.md). Formula-first creation uses the
+  function dialog, its Edit formula pencil, confirmation, then one canvas
+  click. Existing graph edits in Properties apply automatically when valid.
 - For a repeatable manual drawing exercise, use
   [triangle.md](references/triangle.md) and its bundled reference image.
 
@@ -111,8 +116,10 @@ real expiring download links instead; it does not write onto the user's computer
    any other tool remains active after creation.
    Escape does not delete already committed points or strokes. Use history and
    visual inspection to check what remains; preserve the user's earlier work.
-6. Distinguish a preview from a committed object: observe an enabled Create or
-   Apply button, click it, then confirm the object survives leaving the editor.
+6. Distinguish a preview from a committed object: finish the visible creation
+   workflow, then confirm the object survives leaving the editor. A function
+   dialog needs a canvas click after confirmation; Properties function edits
+   apply automatically when valid and do not have an Apply button.
    Verify the final canvas visually and use Property Code to check the intended
    objects and any unwanted extra attempts. Selecting a command may pan the view;
    reobserve before canvas actions. Complete the file delivery above.

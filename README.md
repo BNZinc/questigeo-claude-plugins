@@ -1,7 +1,7 @@
 # Questi Geo for Claude
 
 Draw, edit, and export mathematical diagrams in [Questi Geo](https://geo.questi.kr/).
-Published by **BnZ**. Plugin version: **1.0.4**.
+Published by **BnZ**. Plugin version: **1.0.5**.
 
 This plugin bundles drawing instructions and an authenticated remote MCP
 connection to Questi Geo's own cloud browser. Claude operates the real editor
@@ -20,6 +20,14 @@ must be reported, and failed construction attempts must be undone or edited
 before retrying. Visual reproduction is not proof of exact mathematical
 constraints. The hosted browser cannot upload or reopen downloaded GGB files;
 Claude must identify round-trip verification as untested in that mode.
+
+## Equation Input in 1.0.5
+
+Choose Draw > Functions > y=f(x) or x=g(y), then use the Edit formula pencil.
+Enter the expression, named coefficients and x/y ranges, confirm, and click
+the canvas once to commit. Subsequent valid edits in Properties apply
+automatically. Formula labels are annotations, not plotted graphs. The shared
+function guide covers invalid drafts, placement cancellation and verification.
 
 ## Requirements
 
@@ -58,8 +66,8 @@ UI. A bare skill ZIP does not include the MCP configuration.
 
 ## Session and File Limits
 
-The public beta allows one active drawing per Questi account, six new drawings
-per hour, and three simultaneous browsers across the service. Reuse the returned
+The service allows concurrent drawings on one Questi account, six new drawings
+per account per hour, and three simultaneous browsers across the service. Reuse the returned
 browserId. Sessions close after 30 idle minutes or 60 total minutes. Export PNG
 and GGB before closing. Existing exports remain accessible until their original
 one-hour expiry, including after the browser closes.
