@@ -9,6 +9,7 @@ export const pluginFiles = [
   'skills/questi-geo/references/files-and-access.md',
   'skills/questi-geo/references/functions.md',
   'skills/questi-geo/references/hosted-browser.md',
+  'skills/questi-geo/references/image-requests.md',
   'skills/questi-geo/references/recovery.md',
   'skills/questi-geo/references/reproduce.md',
   'skills/questi-geo/references/runtime.md',

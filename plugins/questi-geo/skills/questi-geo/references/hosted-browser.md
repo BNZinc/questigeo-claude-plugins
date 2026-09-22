@@ -2,7 +2,7 @@
 
 Use this only when the session actually exposes authorized `questi_browser_*`
 tools. The separately running MCP service supplies an isolated browser. This
-skill alone does not provision that service. Public plugin 1.0.4 connects to the
+skill alone does not provision that service. The 1.0.5 plugin package connects to the
 stable Questi-hosted service using Questi login, not an operator access key.
 
 ## Operate the Browser
@@ -10,7 +10,9 @@ stable Questi-hosted service using Questi login, not an operator access key.
 1. Call `questi_browser_start` once without arguments for a new drawing. Save its
    `browserId` and pass it to EVERY later tool, including screenshots and downloads.
    Start without an ID creates another empty browser; a new MCP connection does
-   not mean a new drawing. Do not invent IDs or reuse another user's ID.
+   not mean a new drawing. Separate requests can draw in parallel, even on the
+   same account. Keep each request's browserId distinct; do not reuse a sibling
+   drawing's ID or search other conversations for one.
 2. Menus and input fields have refs in `questi_browser_snapshot`. Use only fresh
    refs. Geometry lives in WebGL: use screenshots and coordinate mouse tools.
 3. Coordinates are viewport CSS pixels at 1440 x 1000 with device scale 1. Do not
@@ -22,7 +24,7 @@ stable Questi-hosted service using Questi login, not an operator access key.
    native host computer use, another browser, JavaScript, shell, internal
    stores, or off-site geometry generation as a fallback for this workflow.
 
-When available, `questi_browser_guide` exposes the maintained editor, recovery,
+When available, `questi_browser_guide` exposes the maintained reproduce, editor, recovery,
 functions and export guides directly through MCP. Read the relevant topic instead
 of guessing an unfamiliar gesture. Action responses distinguish dispatched input
 from verified geometry and include visible UI state; a failed action returns fresh
@@ -75,8 +77,12 @@ On an authorization error, use the host's reconnect UI and sign in with Questi.
 OAuth connections survive service restart; live drawing browsers do not. Existing
 export links remain available until their one-hour expiry. Never claim the files
 have been saved on the user's computer merely because the server exported them.
-There is one active browser per Questi account, six new drawings per hour and
-three shared concurrent browsers. Reuse browserId; do not create accounts or
+Concurrent drawings have separate browser sessions; there is no one-browser
+account lock. Six new drawings per account per hour and a configured shared
+server capacity still apply. `BROWSER_CAPACITY_REACHED` means the host is full,
+not that the user is logged in elsewhere. Report it and wait for capacity; do
+not search old chats for IDs, repeatedly sleep/retry, or close another drawing.
+Reuse browserId only within the same drawing. Do not create accounts or
 connections to bypass limits. Sessions end after 30 idle minutes or 60 total
 minutes. Save PNG and GGB before closing. Expiring links are bearer links: anyone
 with the link can download it. Do not distribute them beyond the user's request.

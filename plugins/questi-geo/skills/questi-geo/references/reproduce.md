@@ -1,9 +1,16 @@
 # Reproduce a Problem Diagram
 
 Use this for an actual user-provided problem, not the bundled triangle exercise.
-The default deliverables are a saved PNG of the finished drawing and an editable
-GGB, with both absolute local paths in the final response. A process video or the
+The default deliverables are a PNG of the finished drawing and an editable
+GGB, using verified expiring download links in the hosted browser or absolute
+paths in an explicitly local workflow. Respect an explicit output-format request.
+A process video or the
 reference image left underneath an empty canvas does not satisfy this task.
+
+An attached problem image plus "위 그림을 QuestiGeo로 그려줘" or "위 그림의 GGB를
+만들어줘" is a complete reproduction request. Inspect that source and infer the
+construction yourself; do not ask the user for a coordinate recipe, substitute
+the bundled triangle, or solve the exercise instead. See [examples](image-requests.md).
 
 ## Read the Source Before Drawing
 
@@ -42,10 +49,13 @@ For grids or repeated shapes, infer shared rows/columns from the visible regular
 structure and inspect any missing spans separately. Do not trace every noisy
 pixel of a scanned straight line.
 
-**Trace when useful.** Open the image through the local-file option, adjust its
+**Trace when available.** In an explicitly local workflow, open the image through the local-file option, adjust its
 opacity, and construct editable objects over it. Hide the reference to verify
 the actual result. This is free manual work, not paid image-to-GGB conversion.
 Never silently switch to conversion because manual reproduction is difficult.
+The hosted browser blocks file import, but the calling model can still read the
+conversation attachment and construct through mouse/keyboard tools. Missing
+editor upload support is not itself a blocker for that workflow.
 
 ## Calibrate, Then Operate the UI
 
@@ -97,14 +107,14 @@ the reference hidden and selection handles dismissed. Check:
 | Topology | Same crossings, touching points, gaps, branch count, and inside/outside regions |
 | Metric | Given coordinates/equations, slopes, ratios, and endpoints checked numerically |
 | Appearance | Aspect ratio, label/subscript readability, thickness, dashes, fills, arrows |
-| Deliverable | Both PNG and GGB saved locally, verified paths, editable objects, reopen without missing geometry |
+| Deliverable | Requested files are downloadable, hold editable objects, and agree with the final drawing; record any unsupported reopen check |
 
 Fix the largest discrepancy first, then compare again. An aggregate image score
 does not excuse one missing edge or misplaced tangency. Do not declare all
 arbitrary problems supported after a few examples. Report unreadable source
 details, approximate portions, unsupported constructions, and untested cases.
 
-Finish with [local-file delivery](files-and-access.md#export-and-local-delivery).
+Finish with [file delivery](files-and-access.md#export-and-local-delivery).
 If corrections were made during comparison, export the corrected drawing again
 so both delivered files show the same final result.
 

@@ -1,7 +1,7 @@
 {
   "name": "questi-geo",
-  "version": "1.0.4",
-  "description": "Draw mathematical diagrams through Questi Geo's hosted browser and deliver PNG and editable GGB downloads.",
+  "version": "1.0.5",
+  "description": "Draw mathematical diagrams and plot editable equations with coefficients and coordinate ranges through Questi Geo's hosted browser; deliver PNG and GGB downloads.",
   "author": {
     "name": "BnZ",
     "email": "support@questi.im"
